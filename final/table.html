@@ -1,0 +1,41 @@
+<html>
+  <head>
+
+    <style>
+    #table_div {
+      width: 600px;
+    }
+    </style>
+
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Number of Complaints');
+        data.addColumn('number', 'Percent');
+        data.addRows([
+          ['Identity Theft',  {v:290056, f: '290,056'},{v: 0.14, f: '14%'}],
+          ['Debt Collection',   {v:204644,   f: '204,644'},{v: 0.1, f: '10%'}],
+          ['Banks and Lenders', {v:152707, f: '152,707'},{v: 0.07, f: '7%'}],
+          ['Impostor Scams',   {v:121720,  f: '121,720'},{v: 0.06, f: '6%'}],
+          ['Telephone and Mobile Services',   {v:116261,  f: '116,261'},{v: 0.06, f: '6%'}],
+          ['Prizes, Sweepstakes and Lotteries',   {v:89944,  f: '89,944'},{v: 0.04, f: '4%'}],
+          ['Auto-Related Complaints',   {v:82701,  f: '82,701'},{v: 0.04, f: '4%'}],
+          ['Shop-at-Home and Catalog Sales',   {v:66024,  f: '66,024'},{v: 0.03, f: '3%'}],
+          ['Television and Electronic Media',   {v: 53087,  f: '53087'},{v: 0.03, f: '3%'}],
+          ['Advance Payments for Credit Services',   {v: 50422,  f: '50,422'},{v: 0.02, f: '2%'}]
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true});
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id='table_div'></div>
+  </body>
+</html>

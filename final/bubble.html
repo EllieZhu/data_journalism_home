@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.states {
+  fill: #F0F0F0;
+  stroke: #fff;
+}
+
+.symbol {
+  fill-opacity: .7;
+  stroke: #fff;
+}
+
+/*body {
+  font: 10px sans-serif;
+}*/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+  stroke: #c0c0c0;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.d3-tip {
+  line-height: 1;
+  background-color: white;
+  color: gray;
+  border-color: gray;
+  font-size: 15px;
+  background: rgba(255,255,255,0.7);
+  padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+.button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+
+}
+
+#first {
+  clear: both;
+  margin-left:auto;
+  margin-right: auto;
+  width:750px;
+  margin-top:60px;
+  /*background-color: red;*/
+  /*position: relative;*/
+}
+
+
+#second {
+  clear: both;
+  margin-left:auto;
+  margin-right: auto;
+  width:750px;
+  margin-top: 60px;
+ /* background-color: orange;*/
+}
+
+#middle {
+  clear: both;
+  margin-left:auto;
+  margin-right: auto;
+  width:750px;
+  margin-top: 60px;
+  margin-bottom: -20px;
+ /* background-color: orange;*/
+}
+
+#third {
+  clear: both;
+  margin-left:auto;
+  margin-right: auto;
+  width:750px;
+  margin-top: 50px;
+  /*background-color: yellow;*/
+}
+
+.axis2 path,
+.axis2 line {
+  fill: none;
+  stroke: #c0c0c0;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis2 path {
+  display: none;
+}
+
+.legend {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+}
+
+.para{
+  width:750px;
+  text-align: left;
+  font-family: helvetica, arial, sans-serif;
+  margin-left:auto;
+  margin-right: auto;
+  font-size: 15px;
+ /* color: #595959;*/
+}
+
+#foot{
+  width:750px;
+  text-align: left;
+  font-family: helvetica, arial, sans-serif;
+  margin-left:auto;
+  margin-right: auto;
+  font-size: 12px;
+  color: grey;
+ /* color: #595959;*/
+}
+
+
+#title {
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+/*  color: #595959;*/
+  margin-left:auto;
+  margin-right: auto;
+  width: 750px;
+}
+
+.hed {
+  margin-left:auto;
+  margin-right: auto;
+  width: 750px;
+  font-family: helvetica, arial, sans-serif;
+  /*margin-left: 5px;*/
+  font-weight: bold;
+/*  color: #595959;*/
+
+}
+
+
+ #table_div {
+  margin-top: 50px;
+  margin-left:auto;
+  margin-right: auto;
+  width: 750px;
+}
+
+#byline {
+  margin-left:auto;
+  margin-right: auto;
+  width: 750px;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 13px;
+}
+
+.x.axis text {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+}
+
+.y.axis text {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+}
+
+.x.axis2 text {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+}
+
+.y.axis2 text {
+  font-family: helvetica, arial, sans-serif;
+  font-size: 12px;
+}
+/*#first {
+  position: fixed;
+  margin-top: 50px;
+  height: 1000px;
+  margin-bottom: 100
+}
+
+#second {
+  position: relative;
+  margin-top: 100px;
+}*/
+
+</style>
+
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+
+
+
+<div>
+  <p id="title">US Consumer Complaits Are on the Rise, According to FTC<p>
+  <p id="byline">By ELLIE ZHU</p>
+  <p class="para">In the past 10 years, consumer complaints in the US are on the rise, according to FTC’s Consumer Financial Protection Bureau Consumer Complaint Database.  In 2013, there are more than 2 million complaints cross the US, which almost doubled compared to 2007. <p>
+</div>
+
+<div id="first"> 
+<p class="hed">Graphic 1: US consumer complaits grows steadly since 2000<p>
+</div>
+
+
+<p class="para">“Identity Theft remains the most common complaints, ” Jessica Rich, Director of Consumer Protection Bureau, said. “Raising consumers’ awareness is important.”<p>
+
+<p class="para">Among all the complaints received, fraud and identity theft complaints are the top complaint types. In 2013, Identity theft continues to top the consumer complaints since 2006. Usually, identity theft steals personal information, which they could use to run up people’s credit cards. Among all the identity theft complaints, 30% of which were tax or wage related, which is the largest category of identity theft complaints.<p>
+
+<div id="second"> 
+<p class="hed">Graphic 2:Identity Theft top the ranking of consumer complaints</p>
+</div>
+
+<div id="middle">
+<p class="hed">Graphic 3:Identity Theft top the ranking of consumer complaints</p>
+<p class="para">More than one million complaints were fraud-related. According to the FTC’s annual report, American consumers reported losing over $1.6 million to fraud in 2013.  Sixty-one percent of the consumers who reported a fraud related complaints also reported an amount paid. <p>
+</div>
+<div id='table_div'>
+</div>
+
+<div id="third">
+
+<p class="hed">Graphic 4:Fraud complaints and Identity Theft each state</p>
+<p class="para">Within the past three years, the amount of complaints. In 2013, Florida is the state with the highest per capita rate of reported fraud and other types of complaints, followed by Nevada and Georgia. Florida is also the state with the highest per capita rate of reported identity theft complaints, followed by Georgia and California. <p>
+
+<div class = 'button'>
+
+  <select id = "fraud">
+
+    <option value="fraud1" >2011 Fraud</option>
+    <option value="fraud2">2012 Fraud</option>
+    <option value="fraud3">2013 Fraud</option>
+
+  </select>
+
+  <br>
+
+  <select id ="identity">
+
+    <option value="identity1">2011 Identity</option>
+    <option value="identity2">2012 Identity</option>
+    <option value="identity3">2013 Identity</option>
+
+  </select>
+
+<!-- <p class = 'fraud'><button id = "fraud1" class="button">Fraud</button></p>
+<p class = 'identity'><button id = "identity1" class="button">Identity</button> </p> -->
+
+</div>
+
+</div>
+<div id="foot">
+  <p id="footnote">Source: Consumer Financial Protection Bureau Consumer Complaint Database</p>
+</div>
+
+
+<!-- <div id="bubble_map"> -->
+
+
+<script>
+
+//line chart
+
+// var tip3 = d3.tip()
+//   .attr('class', 'd3-tip')
+//   .html (function(d) {
+//     // return d.properties[currentProperty];
+//     return "<span style='color: red; font-family: helvetica'>"+d.close+"</span>"
+//   })
+//   .offset([0,0]);
+
+var margin = {top: 20, right: 55, bottom: 30, left: 50},
+    width = 750 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var parseDate = d3.time.format("%d-%b-%y").parse;
+
+d3.tsv("data.tsv", function(error, data) {
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    d.close = +d.close;
+  });
+
+var x1 = d3.time.scale()
+    .range([0, width])
+    .domain(d3.extent(data, function(d) { return d.date; }));
+
+var y1 = d3.scale.linear()
+    .range([height, 0])
+    .domain([0, d3.max(data, function(d) { return d.close; })]);
+
+var xAxis1 = d3.svg.axis()
+    .scale(x1)
+    .orient("bottom");
+
+var yAxis1 = d3.svg.axis()
+    .scale(y1)
+    .orient("left");
+
+var line = d3.svg.line()
+    .x(function(d) { return x1(d.date); })
+    .y(function(d) { return y1(d.close); })
+    .interpolate("linear");
+
+var svg = d3.select("#first").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    // .call(tip3)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // x1.domain(d3.extent(data, function(d) { return d.date; }));
+  // y1.domain(d3.extent(data, function(d) { return d.close; }));
+
+svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis1);
+
+svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis1)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Complaints (000)");
+
+svg.append("path")
+      .datum(data)
+      .attr("class", "line")
+      // .on('mouseover', tip3.show)
+      // .on('mouseout', tip3.hide)
+      .attr("d", line(data));
+
+svg.selectAll('circle')
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr('cx', function(d) {
+        return x1(d.date)
+        })
+        .attr('cy', function(d) {
+        return y1(d.close)
+        })
+        .attr('r',4)
+        .style("fill", "white")
+        .style("stroke", "steelblue")
+        .style("stroke-width", 2);
+
+
+svg.selectAll('circle')
+        .on('mouseover.tooltip', function(d){ 
+            d3.select(this).transition().attr('r',9);
+            g_tooltip=svg
+                .append('g')
+                .attr('class', "tip_new");
+                
+            g_tooltip.append('rect')
+                .attr("rx", 2)
+                .attr("ry", 2)
+                .attr('x', function() {
+                   if (d.date === "1-Jan-13"){
+                    console.log('Ha!');
+                    return x1(d.date) - 500
+                  } else {
+                    return x1(d.date) -5
+                  }
+                })
+                .attr('y', y1(d.close) - 20)
+                .attr('width', 60)
+                .attr('height', 20)
+                .style('fill','#fff')
+                .style('stroke', '#555');
+
+        
+                g_tooltip.append('text')
+                .text(d.close)
+                .attr('x', function() {
+                   if (d.date == '1-Jan-13'){
+                    return x1(d.date) - 150
+                  } else {
+                    return x1(d.date)
+                  }
+                })
+                .attr('y', y1(d.close) - 6)
+                .style('font-size',12)
+                .style('font-family','Helvetica, sans-serif')
+        })
+
+        .on('mouseout.tooltip', function(d){
+            d3.select(".tip_new").remove();
+            d3.select(this).transition().attr('r',4);
+
+            // d3.select('rect.' + d.line_id)
+            //     .transition()
+            //     .duration(500)
+            //     .style('opacity',0)
+            //     .remove();
+        });
+
+
+});
+
+
+//bubble map
+
+var currentProperty = "fraud1";
+
+var tip2 = d3.tip()
+  .attr('class', 'd3-tip')
+  .html (function(d) {
+    // return d.properties[currentProperty];
+    return "<span style='color: black; font-family: helvetica'>" + d.properties.name+ "</span>" + ": " + "<br><span style='color: #9B843E; font-family: helvetica'>"+d.properties[currentProperty]+"</span>";
+  })
+
+var width2 = 1360,
+    height2 = 700;
+
+var radius = d3.scale.sqrt()
+    .domain([0, 500])
+    .range([0, 25]);
+
+var path = d3.geo.path();
+
+var svg2 = d3.select("#third").append("svg")
+    .attr("width", width2)
+    .attr("height", height2)
+    .call(tip2)
+    .append("g") 
+      .attr("transform", "translate(-50,0)");
+
+queue()
+    .defer(d3.json, "us.json")
+    .defer(d3.json, "us-state-centroids.json")
+    .await(ready);
+
+function ready(error, us, centroid) {
+  svg2.append("path")
+      .attr("class", "states")
+      .datum(topojson.feature(us, us.objects.states))
+      .attr("d", path);
+
+  svg2.selectAll(".symbol")
+      .data(centroid.features.sort(function(a, b) { return b.properties.fraud1 - a.properties.fraud1; }))
+    .enter().append("path")
+      .attr("class", "symbol")
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud1) ; }))
+      .attr("fill","steelblue")
+      .on('mouseover', tip2.show)
+      .on('mouseout', tip2.hide);
+      
+}
+
+
+update1 = function(variable){
+d3.selectAll(".symbol")
+  .transition()
+  .duration(750)
+  .attr("d", path.pointRadius(function(d) { return radius(d.properties.identity1); }))
+  .attr("fill", "#A347A3");
+}
+
+update2 = function(variable){
+d3.selectAll(".symbol")
+  .transition()
+  .duration(750)
+  .attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud1); }))
+  .attr("fill", "steelblue");
+}
+
+d3.selectAll('#identity1').on('click', function() {
+   update1(this.id)
+});
+
+d3.selectAll('#fraud1').on('click', function() {
+   update2(this.id)
+});
+
+document.querySelector("#fraud").addEventListener("change", dataUpdate1);
+document.querySelector("#identity").addEventListener("change", dataUpdate2);
+
+
+function dataUpdate1() {
+
+    var menuvalue = document.querySelector("#fraud");
+
+    if (menuvalue.selectedIndex == 0) {
+
+      currentProperty = "fraud1";
+
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud1); }))
+      .attr("fill", "steelblue");
+
+    }
+
+    if (menuvalue.selectedIndex == 1) {
+
+      currentProperty = "fraud2";
+
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud2); }))
+      .attr("fill", "steelblue");
+
+    }
+
+    if (menuvalue.selectedIndex == 2) {
+
+      currentProperty = "fraud3";
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud3); }))
+      .attr("fill", "steelblue");
+    }
+}
+
+function dataUpdate2() {
+
+  var menuvalue2 = document.querySelector("#identity");
+
+    if (menuvalue2.selectedIndex == 0) {
+
+      currentProperty = "identity1";
+
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.identity1); }))
+      .attr("fill", "#A347A3");
+
+    }
+
+    if (menuvalue2.selectedIndex == 1) {
+
+      currentProperty = "identity2";
+
+
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.identity2); }))
+      .attr("fill", "#A347A3");
+
+    }
+
+    if (menuvalue2.selectedIndex == 2) {
+
+      currentProperty = "identity3";
+
+
+      d3.selectAll(".symbol")
+      .transition()
+      .duration(750)
+      .attr("d", path.pointRadius(function(d) { return radius(d.properties.identity3); }))
+      .attr("fill", "#A347A3");
+    }
+
+    console.log("A New Option is selected");
+
+}
+
+
+//bar chart 
+
+var tip1 = d3.tip()
+  .attr('class', 'd3-tip')
+  .html (function(d) {
+    // return d.properties[currentProperty];
+    return  "<span style='color: #9B843E; font-family: helvetica' >" + d.name + ": " + (d.y1-d.y0) +"</span>";
+  })
+
+
+var margin3 = {top: 20, right: 20, bottom: 30, left: 40},
+    width3 = 760 - margin3.left - margin3.right,
+    height3 = 500 - margin3.top - margin3.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width3], .1);
+
+var y = d3.scale.linear()
+    .rangeRound([height3, 0]);
+
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format("s"));
+
+var svg3 = d3.select("#second").append("svg")
+    .attr("width", width3 + margin3.left + margin3.right)
+    .attr("height", height3 + margin3.top + margin3.bottom)
+    .call(tip1)
+  .append("g")
+    .attr("transform", "translate(" + margin3.left + "," + margin3.top + ")");
+
+d3.csv("data.csv", function(error, data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+
+  data.forEach(function(d) {
+    var y0 = 0;
+    d.ages = color.domain().map(function(name) { return {name: name, y0: y0, y1: y0 += +d[name]}; });
+    d.total = d.ages[d.ages.length - 1].y1;
+  });
+
+  data.sort(function(a, b) { return a.total - b.total; });
+
+  x.domain(data.map(function(d) { return d.State; }));
+  y.domain([0, d3.max(data, function(d) { return d.total; })]);
+
+svg3.append("g")
+      .attr("class", "x axis2")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+svg3.append("g")
+      .attr("class", "y axis2")
+      .call(yAxis)
+    .append("text")
+      // .attr("transform", "rotate(-90)")
+      .attr("y", -18)
+      .attr("dy", ".71em")
+      .style("text-anchor", "center")
+      .text("# of Complaints")
+      // .attr('class', 'legend')
+      ;
+
+var state = svg3.selectAll(".state")
+      .data(data)
+    .enter().append("g")
+      .attr("class", "g")
+      .attr("transform", function(d) { return "translate(" + x(d.State) + ",0)"; })
+      // .on('mouseover', tip.show)
+      // .on('mouseout', tip.hide);
+
+state.selectAll("rect")
+      .data(function(d) { return d.ages; })
+      // .call(tip)
+    .enter().append("rect")
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.y1); })
+      .attr("height", function(d) { return y(d.y0) - y(d.y1); })
+      .style("fill", function(d) { return color(d.name); })
+      .on('mouseover', tip1.show)
+      .on('mouseout', tip1.hide);
+      // .on('mouseover', function(d,i){
+      //   tip1.show(d[i]);
+      // })
+      // .on('mouseout', function(d){
+      //   tip1.hide(d[i]);});
+
+var legend = svg3.selectAll(".legend")
+      .data(color.domain().slice().reverse())
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+legend.append("rect")
+      .attr("x", 18)
+      .attr("width", 18)
+      .attr("height", 18)
+      .style("fill", color);
+
+legend.append("text")
+      .attr("x", 44)
+      .attr("y", 9)
+      .attr("dy", ".35em")
+      .style("text-anchor", "start")
+      .text(function(d) { return d; });
+
+});
+
+google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Number of Complaints');
+        data.addColumn('number', 'Percent');
+        data.addRows([
+          ['Identity Theft',  {v:290056, f: '290,056'},{v: 0.14, f: '14%'}],
+          ['Debt Collection',   {v:204644,   f: '204,644'},{v: 0.1, f: '10%'}],
+          ['Banks and Lenders', {v:152707, f: '152,707'},{v: 0.07, f: '7%'}],
+          ['Impostor Scams',   {v:121720,  f: '121,720'},{v: 0.06, f: '6%'}],
+          ['Telephone and Mobile Services',   {v:116261,  f: '116,261'},{v: 0.06, f: '6%'}],
+          ['Prizes, Sweepstakes and Lotteries',   {v:89944,  f: '89,944'},{v: 0.04, f: '4%'}],
+          ['Auto-Related Complaints',   {v:82701,  f: '82,701'},{v: 0.04, f: '4%'}],
+          ['Shop-at-Home and Catalog Sales',   {v:66024,  f: '66,024'},{v: 0.03, f: '3%'}],
+          ['Television and Electronic Media',   {v: 53087,  f: '53,087'},{v: 0.03, f: '3%'}],
+          ['Advance Payments for Credit Services',   {v: 50422,  f: '50,422'},{v: 0.02, f: '2%'}]
+        ]);
+
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+        table.draw(data, {showRowNumber: true});
+      }
+
+
+
+//update = function(variable){                                                      1
+//d3.selectAll(".symbol")
+  //.transition()
+ // .duration(750)
+ // .data(centroid.features.sort(function(a, b) { return b.properties.identity1 - a.properties.identity1; }))
+    //.enter().append("path")
+      //.attr("class", "symbol")
+      //.attr("d", path.pointRadius(function(d) { return radius(d.properties.fraud1); }));
+
+
+  //.attr("y", function(d) { console.log("hello!"); return y(d[variable]); })
+  //.attr("height", function(d) { return height - y(d[variable]); })
+//}
+
+
+//d3.selectAll('button').on('click', function() {
+  // update(this.id)
+//});
+
+
+
+//});
+
+</script>
+</body>
